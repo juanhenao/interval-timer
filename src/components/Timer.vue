@@ -1,5 +1,7 @@
 <template>
-  <div class="hello">{{currentTime}}</div>
+  <div class="timer">
+    <p>{{currentTime}}</p>
+  </div>
 </template>
 
 <script lang="ts">
