@@ -10,13 +10,28 @@ body{
 }
 
 .timer {
-  circle{
-    stroke-width: 3;
-    stroke-dasharray: "565.48";
-    stroke: green;
-    fill: none;
-    //stroke-dashoffset: (2*50*3.14);
-    stroke-dashoffset: 50%;
+
+  .text-timer{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 21px;
+  }
+
+  svg{
+    width: 170px;
+
+    circle{
+      stroke-width: 6;
+      fill: none;
+      stroke:gray;
+
+      &.progress-bar{
+        stroke: green;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%,
+      }
+    }
   }
 }
 
@@ -24,5 +39,6 @@ body{
 
 p {
   font-size: 50px;
+  text-align: center;
   font-weight: bold;
 }
