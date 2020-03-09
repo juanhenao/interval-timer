@@ -1,18 +1,15 @@
 <template>
   <div id="app" class="container">
-    <Timer/>
+    <router-link to='/'>Timer</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Timer from './components/Timer.vue';
 
 export default Vue.extend({
-  name: 'App',
-  components: {
-    Timer
-  }
+  name: 'App'
 });
 </script>
 
