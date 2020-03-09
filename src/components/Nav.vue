@@ -7,7 +7,9 @@
 
       <a
         role="button"
-        class="navbar-burger burger"
+        class="navbar-burger"
+        @click="handleClick"
+        :class="{ 'is-active': showNav }"
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
@@ -18,15 +20,11 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
       <div class="navbar-start">
-        <router-link  class="navbar-item" to="/">
-          Timer
-        </router-link>
+        <router-link class="navbar-item" to="/">Timer</router-link>
 
-        <router-link  class="navbar-item" to="/add">
-          Add
-        </router-link>
+        <router-link class="navbar-item" to="/add">Add</router-link>
 
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">More</a>
@@ -59,7 +57,17 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "Nav"
+  name: "Nav",
+  data: function() {
+    return {
+      showNav: false
+    };
+  },
+  methods: {
+    handleClick(){
+      this.showNav = !this.showNav;
+    }
+  }
 });
 </script>
 
