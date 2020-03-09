@@ -9,7 +9,7 @@ const routes = [
     },
     {
         path: '/add',
-        component: Addg
+        component: Add
     }
 ]
 
