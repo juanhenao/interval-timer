@@ -1,19 +1,21 @@
 <template>
-  <div class="timer">
-    <div class="text-timer">
-      <p>{{currentTime}}</p>
+  <div class="container">
+    <div class="timer">
+      <div class="text-timer">
+        <p>{{currentTime}}</p>
+      </div>
+      <svg viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="53" cy="53" :r="radius" />
+        <circle
+          cx="53"
+          cy="53"
+          :r="radius"
+          :stroke-dasharray="perimeter"
+          :stroke-dashoffset="currentPct"
+          class="progress-bar"
+        />
+      </svg>
     </div>
-    <svg viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg">    
-      <circle cx="53" cy="53" :r="radius"/>
-      <circle
-        cx="53"
-        cy="53"
-        :r="radius"
-        :stroke-dasharray="perimeter"
-        :stroke-dashoffset="currentPct"
-        class="progress-bar"
-      />
-    </svg>
   </div>
 </template>
 
@@ -47,18 +49,20 @@ export default Vue.extend({
     startTimer() {
       this.currentInterval = setInterval(() => {
         this.time = this.time + 10;
-        this.setStrokeDashOffset(this.time/this.intervals[this.currentPhase]*100);
+        this.setStrokeDashOffset(
+          (this.time / this.intervals[this.currentPhase]) * 100
+        );
         if (this.time > this.intervals[this.currentPhase]) {
           clearInterval(this.currentInterval);
           this.currentPhase = (this.currentPhase + 1) % this.intervals.length;
           this.time = 0;
-          this.currentPct=0;
+          this.currentPct = 0;
           this.startTimer();
         }
       }, 10);
     },
-    setStrokeDashOffset(value: number){      
-      this.currentPct = ((100-value)/100)*this.perimeter;
+    setStrokeDashOffset(value: number) {
+      this.currentPct = ((100 - value) / 100) * this.perimeter;
     }
   },
   mounted: function() {
