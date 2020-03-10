@@ -10,7 +10,6 @@ import router from './routes';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
-Vue.use(Vuex);
 
 new Vue({
   render: h => h(App),
